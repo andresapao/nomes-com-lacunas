@@ -55,11 +55,13 @@ class App extends React.Component {
           <input type="number" name="totalCharsToHide" onChange={this.onChange.bind(this)} value={this.state.totalCharsToHide}></input>
           <button onClick={this.generateIncompleteWord}>Agora</button>
           <div className="Word">
-          {this.state.wordAtArray.length > 0 &&
-            this.state.wordAtArray.forEach((singleWord) =>
+
+          {
+            this.state.wordAtArray.map((singleWord) =>
             {
 
-              <Word missing={singleWord === '_'} wordValue={singleWord} />
+              return <Word missing={singleWord === '_'} wordValue={singleWord} />
+              
             }
             )
           }
