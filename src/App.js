@@ -32,7 +32,7 @@ class App extends React.Component {
     indexesToHide.forEach(idx => {
       generatedWordWithBlanks[idx] = '_';
     })
-    
+    console.log(generatedWordWithBlanks);
     this.setState({wordAtArray  : generatedWordWithBlanks});
 
   }
