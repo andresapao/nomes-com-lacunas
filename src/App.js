@@ -22,7 +22,7 @@ class App extends React.Component {
     const max = this.state.targetWord.length;
     while(indexesToHide.length < Number.parseInt(this.state.totalCharsToHide))
     {
-      let randomIndex = Math.floor( Math.random() * max ) + 1;
+      let randomIndex = Math.floor( Math.random() * max );
       if(indexesToHide.indexOf(randomIndex)  === -1)
       {
         indexesToHide.push(randomIndex);
