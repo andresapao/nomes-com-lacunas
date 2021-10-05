@@ -2,6 +2,7 @@
 import React, {  useState } from "react";
 import './App.css';
 import Word from "./Word.js";
+import WordToType from "./WordToType";
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -16,6 +17,11 @@ class App extends React.Component {
   const [formGeneratedWord, setFormGeneratedWord] = useState(blankFormGeneratedWord);
   const [wordAtArray, setWordAtArray] = useState([]);
   */
+  verifyHangman = () =>
+  {
+    console.log(this.state.targetWord === this.state.wordAtArray.join(''));
+    return this.state.targetWord === this.state.wordAtArray.join('');
+  }
   generateIncompleteWord = () =>
   {
     let indexesToHide = [];
@@ -53,18 +59,12 @@ class App extends React.Component {
       <div className="App">
           <input type="text" name="targetWord" onChange={this.onChange.bind(this)} value={this.state.targetWord}></input>
           <input type="number" name="totalCharsToHide" onChange={this.onChange.bind(this)} value={this.state.totalCharsToHide}></input>
-          <button onClick={this.generateIncompleteWord}>Agora</button>
+          <button onClick={this.generateIncompleteWord}>Gerar palavra</button>
           <div className="Word">
 
-          {
-            this.state.wordAtArray.map((singleWord) =>
-            {
-
-              return <Word missing={singleWord === '_'} wordValue={singleWord} />
-              
-            }
-            )
-          }
+            <Word wordValue={this.state.wordAtArray.join('')} />            
+            <WordToType wordWithBlanks={""} onChange={this.onChange} /> 
+            <button onClick={this.verifyHangman}>Verificar</button>                                     
           </div>        
 
       </div>
